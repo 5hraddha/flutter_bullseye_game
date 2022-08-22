@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'prompt.dart';
 
 void main() {
   runApp(const BullsEyeApp());
@@ -15,7 +16,7 @@ class BullsEyeApp extends StatelessWidget {
       DeviceOrientation.landscapeRight,
     ]);
     return const MaterialApp(
-      title: 'BullsEye',
+      title: 'Bullseye',
       home: GamePage(),
     );
   }
@@ -25,7 +26,7 @@ class GamePage extends StatefulWidget {
   const GamePage({Key? key}) : super(key: key);
 
   @override
-  State<GamePage> createState() => _GamePageState();
+  _GamePageState createState() => _GamePageState();
 }
 
 class _GamePageState extends State<GamePage> {
@@ -36,21 +37,16 @@ class _GamePageState extends State<GamePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            const Text(
-              'Hello BullsEye',
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                color: Colors.green,
-              ),
+            const Prompt(
+              targetValue: 100,
             ),
             TextButton(
-                onPressed: () {
-                  _showAlert(context);
-                },
-                child: const Text(
-                  'Hit Me',
-                  style: TextStyle(color: Colors.blue),
-                ))
+              child:
+                  const Text('Hit Me!', style: TextStyle(color: Colors.blue)),
+              onPressed: () {
+                _showAlert(context);
+              },
+            ),
           ],
         ),
       ),
@@ -59,7 +55,7 @@ class _GamePageState extends State<GamePage> {
 
   void _showAlert(BuildContext context) {
     var okButton = TextButton(
-      child: const Text('Awesome'),
+      child: const Text('Awesome!'),
       onPressed: () {
         Navigator.of(context).pop();
         print('Awesome pressed!');
@@ -70,7 +66,7 @@ class _GamePageState extends State<GamePage> {
       builder: (BuildContext context) {
         return AlertDialog(
           title: const Text('Hello there!'),
-          content: const Text('This is my first pop-up'),
+          content: const Text('This is my first pop-up!'),
           actions: [
             okButton,
           ],
