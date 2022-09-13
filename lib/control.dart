@@ -16,15 +16,17 @@ class _ControlState extends State<Control> {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         const Text('1'),
-        Slider(
-          value: _currentValue,
-          onChanged: (newValue) {
-            setState(() {
-              _currentValue = newValue;
-            });
-          },
-          min: 1,
-          max: 100,
+        Expanded(
+          child: Slider(
+            value: _currentValue,
+            onChanged: (newValue) {
+              setState(() {
+                _currentValue = newValue;
+              });
+            },
+            min: 1,
+            max: 100,
+          ),
         ),
         const Text('100'),
       ],
