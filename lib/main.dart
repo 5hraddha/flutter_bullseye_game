@@ -76,6 +76,9 @@ class _GamePageState extends State<GamePage> {
                     )),
                 onPressed: () {
                   _showAlert(context);
+                  setState(() {
+                    _model.totalScore += _pointsForCurrentRound();
+                  });
                 },
               ),
               Score(
@@ -101,7 +104,6 @@ class _GamePageState extends State<GamePage> {
       child: const Text('Awesome!'),
       onPressed: () {
         Navigator.of(context).pop();
-        print('Awesome pressed!');
       },
     );
     showDialog(
