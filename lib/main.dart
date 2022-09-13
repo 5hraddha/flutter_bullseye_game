@@ -11,12 +11,28 @@ class BullsEyeApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // Lock the screen orientation
     SystemChrome.setPreferredOrientations([
       DeviceOrientation.landscapeLeft,
       DeviceOrientation.landscapeRight,
     ]);
+
+    // Set the colors for the status bar and navigation bar
+    SystemChrome.setSystemUIOverlayStyle(
+      const SystemUiOverlayStyle(
+        statusBarColor: Colors.transparent,
+        statusBarBrightness: Brightness.light,
+        statusBarIconBrightness: Brightness.dark,
+        systemNavigationBarColor:
+            Colors.white, // navigation bar doesn't accept Colors.transparent
+        systemNavigationBarDividerColor: Colors.transparent,
+        systemNavigationBarIconBrightness: Brightness.light,
+      ),
+    );
+
     return const MaterialApp(
       title: 'Bullseye',
+      debugShowCheckedModeBanner: false,
       home: GamePage(),
     );
   }
@@ -32,22 +48,24 @@ class GamePage extends StatefulWidget {
 class _GamePageState extends State<GamePage> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Prompt(
-              targetValue: 100,
-            ),
-            TextButton(
-              child:
-                  const Text('Hit Me!', style: TextStyle(color: Colors.blue)),
-              onPressed: () {
-                _showAlert(context);
-              },
-            ),
-          ],
+    return SafeArea(
+      child: Scaffold(
+        body: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              const Prompt(
+                targetValue: 100,
+              ),
+              TextButton(
+                child:
+                    const Text('Hit Me!', style: TextStyle(color: Colors.blue)),
+                onPressed: () {
+                  _showAlert(context);
+                },
+              ),
+            ],
+          ),
         ),
       ),
     );
