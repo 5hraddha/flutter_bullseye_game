@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'prompt.dart';
 import 'control.dart';
+import 'score.dart';
 
 void main() {
   runApp(const BullsEyeApp());
@@ -66,6 +67,7 @@ class _GamePageState extends State<GamePage> {
                   _showAlert(context);
                 },
               ),
+              const Score(totalScore: 0, round: 1),
             ],
           ),
         ),
@@ -74,7 +76,7 @@ class _GamePageState extends State<GamePage> {
   }
 
   void _showAlert(BuildContext context) {
-    var okButton = TextButton(
+    final okButton = TextButton(
       child: const Text('Awesome!'),
       onPressed: () {
         Navigator.of(context).pop();
