@@ -91,9 +91,21 @@ class _GamePageState extends State<GamePage> {
 
   int _pointsForCurrentRound() {
     const maximumScore = 100;
-    final calculatedScore =
-        maximumScore - ((_model.target - _model.current).abs());
-    return calculatedScore;
+    return maximumScore - _differenceAmount();
+  }
+
+  int _differenceAmount() => (_model.target - _model.current).abs();
+
+  String _alertTitle() {
+    final difference = _differenceAmount();
+    if (difference == 0) {
+      return 'Perfect! You did it.';
+    } else if (difference <= 5) {
+      return 'You almost had it.';
+    } else if (difference <= 10) {
+      return 'Not bad!';
+    }
+    return 'Try hard to hit close!';
   }
 
   void _showAlert(BuildContext context) {
@@ -112,7 +124,7 @@ class _GamePageState extends State<GamePage> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: const Text('Hello there!'),
+          title: Text(_alertTitle()),
           content: Text('The current value of the slider is ${_model.current}\n'
               'You scored ${_pointsForCurrentRound()} points in this round.'),
           actions: [
