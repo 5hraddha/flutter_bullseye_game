@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'text_styles.dart';
+import '../styles/text_styles.dart';
 
 class Prompt extends StatelessWidget {
   const Prompt({Key? key, required this.targetValue}) : super(key: key);

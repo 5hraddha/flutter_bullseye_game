@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'text_styles.dart';
+import '../styles/text_styles.dart';
 import 'style_button.dart';
 
 class Score extends StatelessWidget {

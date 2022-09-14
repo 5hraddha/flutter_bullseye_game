@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'dart:ui' as ui;
-import 'game_model.dart';
-import 'slider_thumb_image.dart';
+import '../game_model.dart';
+import '../slider_thumb_image.dart';
 
 class Control extends StatefulWidget {
   const Control({Key? key, required this.model}) : super(key: key);
