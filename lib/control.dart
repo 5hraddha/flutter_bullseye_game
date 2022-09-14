@@ -16,7 +16,13 @@ class _ControlState extends State<Control> {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        const Text('1'),
+        const Padding(
+          padding: EdgeInsets.only(left: 80.0),
+          child: Text(
+            '1',
+            style: TextStyle(fontWeight: FontWeight.bold),
+          ),
+        ),
         Expanded(
           child: Slider(
             value: widget.model.current.toDouble(),
@@ -29,7 +35,13 @@ class _ControlState extends State<Control> {
             max: 100,
           ),
         ),
-        const Text('100'),
+        const Padding(
+          padding: EdgeInsets.only(right: 80.0),
+          child: Text(
+            '100',
+            style: TextStyle(fontWeight: FontWeight.bold),
+          ),
+        ),
       ],
     );
   }

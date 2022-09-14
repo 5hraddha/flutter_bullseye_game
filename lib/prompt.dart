@@ -11,12 +11,15 @@ class Prompt extends StatelessWidget {
     return Column(
       children: <Widget>[
         Text(
-          'Put the bullseye as close as you can to'.toUpperCase(),
+          'Put the bullseye as close as you can to hit'.toUpperCase(),
           style: LabelTextStyle.bodyText1(context),
         ),
         Padding(
           padding: const EdgeInsets.all(8.0),
-          child: Text('$targetValue'),
+          child: Text(
+            '$targetValue',
+            style: TargetTextStyle.bodyText1(context),
+          ),
         ),
       ],
     );

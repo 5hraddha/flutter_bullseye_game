@@ -50,7 +50,6 @@ class _GamePageState extends State<GamePage> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Container(
-        padding: const EdgeInsets.all(16.0),
         decoration: const BoxDecoration(
           color: Colors.white,
           image: DecorationImage(
