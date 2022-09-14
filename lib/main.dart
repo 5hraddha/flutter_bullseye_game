@@ -21,18 +21,7 @@ class BullsEyeApp extends StatelessWidget {
       DeviceOrientation.landscapeRight,
     ]);
 
-    // Set the colors for the status bar and navigation bar
-    SystemChrome.setSystemUIOverlayStyle(
-      const SystemUiOverlayStyle(
-        statusBarColor: Colors.transparent,
-        statusBarBrightness: Brightness.light,
-        statusBarIconBrightness: Brightness.dark,
-        systemNavigationBarColor:
-            Colors.white, // navigation bar doesn't accept Colors.transparent
-        systemNavigationBarDividerColor: Colors.transparent,
-        systemNavigationBarIconBrightness: Brightness.light,
-      ),
-    );
+    SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersive);
 
     return const MaterialApp(
       title: 'Bullseye',
@@ -60,30 +49,41 @@ class _GamePageState extends State<GamePage> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-      child: Scaffold(
-        body: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              Prompt(
-                targetValue: _model.target,
-              ),
-              Control(model: _model),
-              TextButton(
-                child: const Text('Hit Me!',
-                    style: TextStyle(
-                      color: Colors.blue,
-                    )),
-                onPressed: () {
-                  _showAlert(context);
-                },
-              ),
-              Score(
-                totalScore: _model.totalScore,
-                round: _model.round,
-                onStartOver: _startNewGame,
-              ),
-            ],
+      child: Container(
+        padding: const EdgeInsets.all(16.0),
+        decoration: const BoxDecoration(
+          color: Colors.white,
+          image: DecorationImage(
+            image: AssetImage('images/background.png'),
+            fit: BoxFit.cover,
+          ),
+        ),
+        child: Scaffold(
+          backgroundColor: Colors.transparent,
+          body: Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Prompt(
+                  targetValue: _model.target,
+                ),
+                Control(model: _model),
+                TextButton(
+                  child: const Text('Hit Me!',
+                      style: TextStyle(
+                        color: Colors.blue,
+                      )),
+                  onPressed: () {
+                    _showAlert(context);
+                  },
+                ),
+                Score(
+                  totalScore: _model.totalScore,
+                  round: _model.round,
+                  onStartOver: _startNewGame,
+                ),
+              ],
+            ),
           ),
         ),
       ),
