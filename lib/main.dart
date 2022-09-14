@@ -5,6 +5,8 @@ import 'prompt.dart';
 import 'control.dart';
 import 'score.dart';
 import 'game_model.dart';
+import 'hit_me_button.dart';
+import 'style_button.dart';
 
 void main() {
   runApp(const BullsEyeApp());
@@ -67,11 +69,8 @@ class _GamePageState extends State<GamePage> {
                   targetValue: _model.target,
                 ),
                 Control(model: _model),
-                TextButton(
-                  child: const Text('Hit Me!',
-                      style: TextStyle(
-                        color: Colors.blue,
-                      )),
+                HitMeButton(
+                  text: 'Hit me'.toUpperCase(),
                   onPressed: () {
                     _showAlert(context);
                   },
@@ -129,8 +128,8 @@ class _GamePageState extends State<GamePage> {
   }
 
   void _showAlert(BuildContext context) {
-    final okButton = TextButton(
-      child: const Text('Awesome!'),
+    final okButton = StyledButton(
+      icon: Icons.close,
       onPressed: () {
         Navigator.of(context).pop();
         setState(() {
