@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'game_model.dart';
+import 'slider_styles.dart';
 
 class Control extends StatefulWidget {
   const Control({Key? key, required this.model}) : super(key: key);
@@ -24,15 +25,18 @@ class _ControlState extends State<Control> {
           ),
         ),
         Expanded(
-          child: Slider(
-            value: widget.model.current.toDouble(),
-            onChanged: (newValue) {
-              setState(() {
-                widget.model.current = newValue.toInt();
-              });
-            },
-            min: 1,
-            max: 100,
+          child: SliderTheme(
+            data: ControlSliderStyle.slider(context),
+            child: Slider(
+              value: widget.model.current.toDouble(),
+              onChanged: (newValue) {
+                setState(() {
+                  widget.model.current = newValue.toInt();
+                });
+              },
+              min: 1,
+              max: 100,
+            ),
           ),
         ),
         const Padding(

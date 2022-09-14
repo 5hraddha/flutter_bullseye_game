@@ -52,7 +52,7 @@ class _GamePageState extends State<GamePage> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Container(
-        padding: const EdgeInsets.fromLTRB(16.0, 20.0, 5.0, 0.0),
+        padding: const EdgeInsets.only(left: 16.0, right: 5.0),
         decoration: BoxDecoration(
           border: Border.all(),
           color: Colors.white,
@@ -67,20 +67,29 @@ class _GamePageState extends State<GamePage> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                Prompt(
-                  targetValue: _model.target,
+                Padding(
+                  padding: const EdgeInsets.only(top: 38.0, bottom: 26.0),
+                  child: Prompt(
+                    targetValue: _model.target,
+                  ),
                 ),
                 Control(model: _model),
-                HitMeButton(
-                  text: 'Hit me'.toUpperCase(),
-                  onPressed: () {
-                    _showAlert(context);
-                  },
+                Padding(
+                  padding: const EdgeInsets.only(top: 16.0),
+                  child: HitMeButton(
+                    text: 'Hit me'.toUpperCase(),
+                    onPressed: () {
+                      _showAlert(context);
+                    },
+                  ),
                 ),
-                Score(
-                  totalScore: _model.totalScore,
-                  round: _model.round,
-                  onStartOver: _startNewGame,
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Score(
+                    totalScore: _model.totalScore,
+                    round: _model.round,
+                    onStartOver: _startNewGame,
+                  ),
                 ),
               ],
             ),
