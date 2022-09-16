@@ -30,3 +30,24 @@ class TargetTextStyle {
         );
   }
 }
+
+class HeadlineTextStyle {
+  static TextStyle? headline1(BuildContext context) {
+    return Theme.of(context).textTheme.headline1?.copyWith(
+          fontWeight: FontWeight.bold,
+          fontSize: 32.0,
+          color: Colors.black,
+          letterSpacing: 2.0,
+        );
+  }
+}
+
+class BodyTextStyle {
+  static TextStyle? bodyText1(BuildContext context) {
+    return Theme.of(context).textTheme.bodyText1?.copyWith(
+          fontSize: 16.0,
+          color: Colors.black,
+          height: 1.5,
+        );
+  }
+}
