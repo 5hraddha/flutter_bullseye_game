@@ -18,7 +18,7 @@ class About extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-          title: const Text('About Bullseye'),
+          title: const Text('About'),
           backgroundColor: Colors.red[700],
         ),
         body: Center(
@@ -31,7 +31,7 @@ class About extends StatelessWidget {
                 children: [
                   const Image(image: AssetImage('images/nub.png')),
                   Text(
-                    'Bullseye'.toUpperCase(),
+                    'Bullseye Blast'.toUpperCase(),
                     style: HeadlineTextStyle.headline1(context),
                   ),
                 ],
